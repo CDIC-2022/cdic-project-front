@@ -1,10 +1,11 @@
+import 'package:cdic_2022/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class OpaqueImage extends StatelessWidget {
 
   final imageUrl;
 
-  const OpaqueImage({Key? key, @required this.imageUrl}) : super(key: key);
+  const OpaqueImage({required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class OpaqueImage extends StatelessWidget {
           fit: BoxFit.fill,
         ),
         Container(
-          color: Colors.green.withOpacity(0.85),
+          color: primaryColorOpacity.withOpacity(0.85),
         ),
       ],
     );
