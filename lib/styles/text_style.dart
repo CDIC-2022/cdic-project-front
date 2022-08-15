@@ -24,7 +24,7 @@ final TextStyle titleStyle = TextStyle(
   fontWeight: FontWeight.w600,
 );
 final TextStyle subTitleStyle = TextStyle(
-  fontSize: 18.0,
+  fontSize: 14.0,
   color: secondaryTextColor,
   fontWeight: FontWeight.w200,
 );

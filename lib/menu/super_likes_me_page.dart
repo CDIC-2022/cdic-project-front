@@ -104,7 +104,7 @@ class SuperLikesMePage extends StatelessWidget {
                     ),
                     leading: ClipOval(
                       child: Image.asset(
-                        "assets/images/anne.jpeg",
+                        "assets/images/polarbear.png",
                         width: 50,
                         height: 50,
                       ),

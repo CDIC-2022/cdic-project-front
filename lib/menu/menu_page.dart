@@ -32,7 +32,7 @@ class ProfilePage extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                "My Profile",
+                                "Home",
                                 textAlign: TextAlign.left,
                                 style: headingTextStyle,
                               ),
@@ -56,55 +56,34 @@ class ProfilePage extends StatelessWidget {
                         children: [
                           ProfileInfoBigCard(
                             firstText: "13",
-                            secondText: "New matches",
+                            secondText: "하루 전력 소모량 모니터링",
                             icon: Icon(
-                              Icons.star,
+                              Icons.access_time,
                               size: 32,
-                              color: blueColor,
+                              color: greenColor,
                             ),
                           ),
                           ProfileInfoBigCard(
                             firstText: "21",
-                            secondText: "Unmatched me",
+                            secondText: "한달 전력 소모량 모니터링",
                             icon: Icon(
-                              Icons.ac_unit,
+                              Icons.calendar_today_outlined,
                               size:32,
-                              color:blueColor
+                              color:greenColor
                             )
                           ),
                         ],
                       ),
-                      TableRow(
-                        children: [
-                          ProfileInfoBigCard(
-                            firstText: "264",
-                            secondText: "All matches",
-                            icon: Icon(
-                              Icons.flag,
-                              size: 32,
-                              color: blueColor,
-                            ),
-                          ),
-                          ProfileInfoBigCard(
-                            firstText: "42",
-                            secondText: "Rematches",
-                            icon: Icon(
-                              Icons.refresh,
-                              size: 32,
-                              color: blueColor,
-                            ),
-                          ),
-                        ],
-                      ),
+
                       TableRow(
                         children: [
                           ProfileInfoBigCard(
                             firstText: "404",
-                            secondText: "Profile Visitors",
+                            secondText: "한달 기준 실시간 요금",
                             icon: Icon(
-                              Icons.remove_red_eye,
+                              Icons.lightbulb_outline,
                               size: 32,
-                              color: blueColor,
+                              color: greenColor,
                             ),
                           ),
                           GestureDetector(
@@ -117,11 +96,11 @@ class ProfilePage extends StatelessWidget {
                             },
                             child: ProfileInfoBigCard(
                               firstText: "42",
-                              secondText: "Super likes",
+                              secondText: "예상 대기 전력 차단량",
                               icon: Icon(
-                                Icons.favorite,
+                                Icons.calculate_outlined,
                                 size: 32,
-                                color: blueColor,
+                                color: greenColor,
                               ),
                             ),
                           ),

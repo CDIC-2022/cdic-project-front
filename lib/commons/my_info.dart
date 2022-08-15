@@ -24,11 +24,7 @@ class MyInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Anne Grethe",
-                style: whiteNameTextStyle,
-              ),
-              Text(
-                ", 24",
+                "Project Scrooge",
                 style: whiteNameTextStyle,
               ),
             ],
