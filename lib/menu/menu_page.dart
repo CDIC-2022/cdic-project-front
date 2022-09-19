@@ -127,8 +127,7 @@ class ProfilePage extends StatelessWidget {
                     width: 10,
                   ),
                   ProfileInfoCard(
-                    hasImage: true,
-                    imagePath: "assets/images/plug.png",
+                    isButton : true,
                   ),
                   SizedBox(
                     width: 10,

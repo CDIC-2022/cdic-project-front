@@ -38,6 +38,11 @@ class CallAPI{
     }
   }
 
+  /*
+    uri : /없이 주소 넣기
+    gett형태로 보냅니다
+    call하는 대에선 await해서 받아줍니다
+   */
   Future<http.Response> ResponseGetHttp(uri) async{
     uri = dns+uri;
     var response = await http.get(Uri.parse(uri)); // 통신
