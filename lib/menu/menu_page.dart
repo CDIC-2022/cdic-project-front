@@ -7,7 +7,14 @@ import 'package:cdic_2022/styles/colors.dart';
 import 'package:cdic_2022/styles/text_style.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() => _ProfilePage();
+}
+
+class _ProfilePage extends State<ProfilePage>{
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -64,13 +71,13 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ),
                           ProfileInfoBigCard(
-                            firstText: "21",
-                            secondText: "한달 전력 소모량 모니터링",
-                            icon: Icon(
-                              Icons.calendar_today_outlined,
-                              size:32,
-                              color:greenColor
-                            )
+                              firstText: "21",
+                              secondText: "한달 전력 소모량 모니터링",
+                              icon: Icon(
+                                  Icons.calendar_today_outlined,
+                                  size:32,
+                                  color:greenColor
+                              )
                           ),
                         ],
                       ),
@@ -141,4 +148,5 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+
 }

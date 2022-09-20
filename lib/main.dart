@@ -1,3 +1,4 @@
+import 'package:cdic_2022/login/commons/login_page.dart';
 import 'package:cdic_2022/menu/menu_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             fontFamily: 'Raleway'
         ),
-        home: ProfilePage()
+        home: LoginPage()
     );
   }
 }
