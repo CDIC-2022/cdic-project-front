@@ -9,14 +9,13 @@ class CallAPI{
 
   final String dns = "";
 
-
   /*
     uri : /없이 주소 넣기
     map : Map형식으로 데이터 넣기
     post형태로 보냅니다
     call하는 대에선 await해서 받아줍니다
    */
-  Future<dynamic> RequestHttp(uri, map) async{
+Future<dynamic> RequestHttp(uri, map) async{
     uri = dns+uri;
     try {
       var response = await http
