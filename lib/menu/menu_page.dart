@@ -135,6 +135,7 @@ class _ProfilePage extends State<ProfilePage>{
                   ),
                   ProfileInfoCard(
                     isButton : true,
+                    deviceName: deviceName,
                   ),
                   SizedBox(
                     width: 50,
