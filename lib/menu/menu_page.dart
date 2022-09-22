@@ -8,16 +8,23 @@ import 'package:cdic_2022/styles/text_style.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
+  String deviceName;
+
+  ProfilePage(this.deviceName, {Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _ProfilePage();
+  State<StatefulWidget> createState() => _ProfilePage(this.deviceName);
+
 }
 
 class _ProfilePage extends State<ProfilePage>{
+  String deviceName;
+  _ProfilePage(this.deviceName);
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+
 
     return Scaffold(
       body: Stack(
@@ -44,7 +51,7 @@ class _ProfilePage extends State<ProfilePage>{
                                 style: headingTextStyle,
                               ),
                             ),
-                            MyInfo(),
+                            MyInfo(deviceName),
                           ],
                         ),
                       ),
@@ -94,13 +101,6 @@ class _ProfilePage extends State<ProfilePage>{
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => SuperLikesMePage(),
-                                ),
-                              );
-                            },
                             child: ProfileInfoBigCard(
                               firstText: "42",
                               secondText: "예상 대기 전력 차단량",
@@ -129,17 +129,16 @@ class _ProfilePage extends State<ProfilePage>{
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  ProfileInfoCard(firstText: "54%", secondText: "Progress"),
+                  //ProfileInfoCard(firstText: "54%", secondText: "Progress"),
                   SizedBox(
-                    width: 10,
+                    width: 50,
                   ),
                   ProfileInfoCard(
                     isButton : true,
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 50,
                   ),
-                  ProfileInfoCard(firstText: "152", secondText: "Level"),
                 ],
               ),
             ),

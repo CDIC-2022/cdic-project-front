@@ -1,71 +1,32 @@
-import 'dart:convert' show json, jsonEncode;
-import 'package:cdic_2022/login/register.dart';
-import 'package:cdic_2022/menu/menu_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:get/get.dart';
-import 'package:cdic_2022/network/callAPI.dart';
 import 'package:http/http.dart' as http;
-import 'package:cdic_2022/login/google_login.dart';
-
 import '../styles/colors.dart';
 import '../styles/text_style.dart';
 import 'User.dart';
+import 'dart:convert' show json, jsonEncode;
 
-class LoginPage extends StatefulWidget{
+class Register extends StatefulWidget {
+
   @override
-  State<StatefulWidget> createState() => _loginPage();
-
+  _RegisterState createState() => _RegisterState();
 }
 
-class _loginPage extends State<LoginPage>{
-  GoogleSignInAccount? _currentUser;
-
+class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   User user = User("", "", "");
-  String url = "http://192.168.1.30:8080/user/login";
+  String url = "http://192.168.1.30:8080/user/register";
 
   Future save() async {
+    print("register started");
     var res = await http.post(Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode({'email': user.email, 'password': user.password}));
-    print(json.decode(res.body)["device"]);
+        body: json.encode({'email': user.email, 'password': user.password, 'device':user.device}));
+    print(res.body);
     if (res.body != "") {
-      Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(
-            builder: (context) => ProfilePage(json.decode(res.body)["device"])), (route) => false);
-    }else{
-      //todo popup login failed
-      print("login failed");
-      showDialog(
-          context: context,
-          barrierDismissible: true,
-          builder: (BuildContext context){
-            return AlertDialog(
-              title: Text("로그인 실패"),
-              content: SingleChildScrollView(
-                child:ListBody(
-                  children: <Widget>[
-                    Text("로그인에 실패하였습니다."),
-                    Text("이메일과 비밀번호를 확인해주세요.")
-                  ],
-                )
-              ),
-              actions: <Widget>[
-                TextButton(
-                  child:Text("확인"),
-                  onPressed: (){
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            );
-          });
+      Navigator.pop(context);
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +58,7 @@ class _loginPage extends State<LoginPage>{
                         SizedBox(
                           height: 100,
                         ),
-                        Text("Login",
+                        Text("Register",
                             style: headingTextStyle,
                         ),
                         SizedBox(
@@ -117,7 +78,7 @@ class _loginPage extends State<LoginPage>{
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Password is Empty';
+                              return 'Email is Empty';
                             }
                             return null;
                           },
@@ -166,20 +127,48 @@ class _loginPage extends State<LoginPage>{
                           height: 4,
                           color: Color.fromRGBO(255, 255, 255, 0.4),
                         ),
-
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "Device",
+                            style: titleStyle,
+                          ),
+                        ),
+                        TextFormField(
+                          controller: TextEditingController(text: user.device),
+                          onChanged: (val) {
+                            user.device = val;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Device is Empty';
+                            }
+                            return null;
+                          },
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                          decoration: InputDecoration(
+                              errorStyle:
+                              TextStyle(fontSize: 20, color: Colors.black),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none)),
+                        ),
+                        Container(
+                          height: 4,
+                          color: Color.fromRGBO(255, 255, 255, 0.4),
+                        ),
                         SizedBox(
                           height: 40,
                         ),
                         Center(
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Register()));
+                              Navigator.pop(context);
                             },
                             child: Text(
-                              "Dont have Account ?",
+                              "Already have Account ?",
                               style: titleStyle,
                             ),
                           ),

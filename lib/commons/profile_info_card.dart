@@ -36,7 +36,7 @@ class _ProfileInfoCard extends State<ProfileInfoCard>{
 
     return Expanded(
       child: Card(
-        elevation: 12,
+        elevation: 10,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: widget.isButton
             ? Center(
