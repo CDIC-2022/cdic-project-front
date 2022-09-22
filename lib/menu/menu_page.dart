@@ -7,10 +7,24 @@ import 'package:cdic_2022/styles/colors.dart';
 import 'package:cdic_2022/styles/text_style.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  String deviceName;
+
+  ProfilePage(this.deviceName, {Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _ProfilePage(this.deviceName);
+
+}
+
+class _ProfilePage extends State<ProfilePage>{
+  String deviceName;
+  _ProfilePage(this.deviceName);
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+
 
     return Scaffold(
       body: Stack(
@@ -37,7 +51,7 @@ class ProfilePage extends StatelessWidget {
                                 style: headingTextStyle,
                               ),
                             ),
-                            MyInfo(),
+                            MyInfo(deviceName),
                           ],
                         ),
                       ),
@@ -64,13 +78,13 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ),
                           ProfileInfoBigCard(
-                            firstText: "21",
-                            secondText: "한달 전력 소모량 모니터링",
-                            icon: Icon(
-                              Icons.calendar_today_outlined,
-                              size:32,
-                              color:greenColor
-                            )
+                              firstText: "21",
+                              secondText: "한달 전력 소모량 모니터링",
+                              icon: Icon(
+                                  Icons.calendar_today_outlined,
+                                  size:32,
+                                  color:greenColor
+                              )
                           ),
                         ],
                       ),
@@ -87,13 +101,6 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => SuperLikesMePage(),
-                                ),
-                              );
-                            },
                             child: ProfileInfoBigCard(
                               firstText: "42",
                               secondText: "예상 대기 전력 차단량",
@@ -122,18 +129,16 @@ class ProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  ProfileInfoCard(firstText: "54%", secondText: "Progress"),
+                  //ProfileInfoCard(firstText: "54%", secondText: "Progress"),
                   SizedBox(
-                    width: 10,
+                    width: 50,
                   ),
                   ProfileInfoCard(
-                    hasImage: true,
-                    imagePath: "assets/images/plug.png",
+                    isButton : true,
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 50,
                   ),
-                  ProfileInfoCard(firstText: "152", secondText: "Level"),
                 ],
               ),
             ),
@@ -142,4 +147,5 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+
 }

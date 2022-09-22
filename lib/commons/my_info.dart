@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MyInfo extends StatelessWidget {
+  String deviceName;
+  MyInfo(this.deviceName);
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -13,10 +16,10 @@ class MyInfo extends StatelessWidget {
         children: [
           RadialProgress(
             width: 4,
-            goalCompleted: 0.9,
+            goalCompleted: 1,
             child: RoundedImage(
-              imagePath: "assets/images/polarbear.png",
-              size: Size.fromWidth(120.0),
+              imagePath: "assets/images/plug.png",
+              size: Size.fromWidth(100.0),
             ),
           ),
           SizedBox(height: 10,),
@@ -24,7 +27,7 @@ class MyInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Project Scrooge",
+                deviceName,
                 style: whiteNameTextStyle,
               ),
             ],
