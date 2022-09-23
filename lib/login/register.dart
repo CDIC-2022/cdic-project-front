@@ -1,3 +1,4 @@
+import 'package:cdic_2022/network/callAPI.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -15,7 +16,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   User user = User("", "", "");
-  String url = "http://192.168.1.30:8080/user/register";
+  String url = CallAPI().dns+"/user/register";
 
   Future save() async {
     print("register started");

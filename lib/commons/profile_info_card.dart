@@ -87,18 +87,18 @@ class _ProfileInfoCard extends State<ProfileInfoCard>{
                 child: widget.isButton
                     ? Center(
                     child: GestureDetector(
-                      onTap: () {
-                        setState(() {
+                      onTap: () async {
+                        print("powerSaveFlag now : " + powerSaveFlag.toString());
                           if (powerSaveFlag) {
+                            //todo
                             // on -> off
-                            powerSaveFlag = powerSave().powerSaveOff();
+                            powerSaveFlag = await powerSave().powerSaveOff(deviceName);
                             onOffText = "ON";
                           } else {
                             // off -> on
-                            powerSaveFlag = powerSave().powerSaveOn();
+                            powerSaveFlag = await powerSave().powerSaveOn(deviceName);
                             onOffText = "OFF";
                           }
-                        });
                         print("Power Save button clicked");
                       },
                       child: Text(

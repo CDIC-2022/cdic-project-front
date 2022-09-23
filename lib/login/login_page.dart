@@ -25,7 +25,7 @@ class _loginPage extends State<LoginPage>{
 
   final _formKey = GlobalKey<FormState>();
   User user = User("", "", "");
-  String url = "http://192.168.1.30:8080/user/login";
+  String url = CallAPI().dns + "/user/login";
 
   Future save() async {
     var res = await http.post(Uri.parse(url),
