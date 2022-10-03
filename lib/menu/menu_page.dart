@@ -5,6 +5,7 @@ import 'package:cdic_2022/commons/profile_info_card.dart';
 import 'package:cdic_2022/styles/colors.dart';
 import 'package:cdic_2022/styles/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:get_mac/get_mac.dart';
 
 import '../power/powerSave.dart';
 
@@ -18,31 +19,36 @@ class ProfilePage extends StatefulWidget {
 
 }
 
-class _ProfilePage extends State<ProfilePage>{
+
+class _ProfilePage extends State<ProfilePage> {
   String deviceName;
+
   _ProfilePage(this.deviceName);
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
+    final screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
 
     return FutureBuilder(
-      future: Future.wait([
-        powerSave().dayReduceW(deviceName),
-        powerSave().monthReduceW(deviceName),
-        powerSave().monthPayment(deviceName),
-        powerSave().expectReduceW(deviceName)]),
-      builder: (BuildContext context, AsyncSnapshot<List> snapshot){
 
-        if(snapshot.connectionState == ConnectionState.waiting){
+      future: Future.wait([
+        powerSave().dayReduceW(),
+        powerSave().monthReduceW(),
+        powerSave().monthPayment(),
+        powerSave().expectReduceW()]),
+      builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return new Center(
             child: new CircularProgressIndicator(),
           );
-        }else if (snapshot.hasError){
+        } else if (snapshot.hasError) {
           //todo error page
           print(snapshot);
           return new Text("Error occured");
-        }else{
+        } else {
           return Scaffold(
             body: Stack(
               children: <Widget>[
@@ -99,8 +105,8 @@ class _ProfilePage extends State<ProfilePage>{
                                     secondText: "한달 전력 소모량 모니터링",
                                     icon: Icon(
                                         Icons.calendar_today_outlined,
-                                        size:32,
-                                        color:greenColor
+                                        size: 32,
+                                        color: greenColor
                                     )
                                 ),
                               ],
@@ -151,7 +157,7 @@ class _ProfilePage extends State<ProfilePage>{
                           width: 50,
                         ),
                         ProfileInfoCard(
-                          isButton : true,
+                          isButton: true,
                           deviceName: deviceName,
                         ),
                         SizedBox(
@@ -167,7 +173,6 @@ class _ProfilePage extends State<ProfilePage>{
         }
       },
     );
-
   }
 
 }

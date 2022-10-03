@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 
 class CallAPI{
 
-  final String dns = "http://10.210.60.81:8080";
+  final String dns = "http://52.193.171.134:8080";
 
   /*
     uri : /없이 주소 넣기

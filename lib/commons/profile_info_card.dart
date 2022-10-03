@@ -27,7 +27,7 @@ class _ProfileInfoCard extends State<ProfileInfoCard>{
   Widget build(BuildContext context){
 
     return FutureBuilder(
-        future: powerSave().isPowerSaved(deviceName),
+        future: powerSave().isPowerSaved(),
         initialData: 0,
         builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -92,12 +92,16 @@ class _ProfileInfoCard extends State<ProfileInfoCard>{
                           if (powerSaveFlag) {
                             //todo
                             // on -> off
-                            powerSaveFlag = await powerSave().powerSaveOff(deviceName);
-                            onOffText = "ON";
+                            powerSaveFlag = await powerSave().powerSaveOff();
+                            setState(() {
+                              onOffText = "ON";
+                            });
                           } else {
                             // off -> on
-                            powerSaveFlag = await powerSave().powerSaveOn(deviceName);
-                            onOffText = "OFF";
+                            powerSaveFlag = await powerSave().powerSaveOn();
+                            setState(() {
+                              onOffText = "OFF";
+                            });
                           }
                         print("Power Save button clicked");
                       },

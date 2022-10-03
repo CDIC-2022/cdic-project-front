@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
     initialRoute: '/',
 
     getPages: [
-      GetPage(name: '/', page: ()=>LoginPage(), transition: Transition.fadeIn),
-      GetPage(name: '/main_menu', page: ()=>ProfileInfoCard(), transition: Transition.leftToRight)
+      GetPage(name: '/', page: ()=>ProfilePage("device-2"), transition: Transition.fadeIn),
+      //GetPage(name: '/main_menu', page: ()=>ProfileInfoCard(), transition: Transition.leftToRight)
     ],
     );
   }
